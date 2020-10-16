@@ -1,4 +1,4 @@
-from django.http import HttpResonse
+from django.http import HttpResponse
 
 def index(request):
-    return("Hello world. This is the squirrel index.")
+    return HttpResponse("This is where Maps View will go.")
