@@ -1,5 +1,6 @@
 import csv
 from django.core.management.base import BaseCommand, CommandError
+from squirrels.models import Squirrel
 
 class Command(BaseCommand):
     help = 'Import squirrel data'
@@ -14,9 +15,16 @@ class Command(BaseCommand):
             reader = csv.DictReader(fp)
 
             for item in reader:
-                pass
+                obj = Squirrel()
+                obj.unique_id=item['Unique Squirrel ID']
+                obj.shift = item['Shift']
+                obj.age = item['Age']
+                obj.latitutde = item['X']
+                obj.longitude = item['Y']
+                obj.date = item['Date']
+                obj.save()
        
-       msg = f'You are importing from {file}'
+        msg = f'You are importing from {file_}'
         self.stdout.write(self.style.SUCCESS(msg))
 
 

@@ -3,10 +3,10 @@ from django.utils.translation import gettext as _
 
 
 class Squirrel(models.Model):
-    #at 3:30 in 8.9 he said id should auto generate - Django should do that
-    name = models.CharField(
-           max_length=100,
-           help_text=_('Name of pet'),
+    unique_id = models.CharField(
+           max_length=20,
+           help_text=_('Unique Identifier for Squirrel'),
+           null=True
     )
    
     latitude = models.DecimalField(
