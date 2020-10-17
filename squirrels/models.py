@@ -54,20 +54,22 @@ class Squirrel(models.Model):
             default=AM,
     )
 
-    date = models.DateTimeField( 
+    date = models.DateField( 
         help_text=_('Day the Squirrel was Sighted'),
         auto_now_add=True,
+        null=True,
     )
     
     def  __str__(self):
         return self.name
 
 
-#class Sighting(models.Model):
-#    squirrel = models.ForeignKey(
-#            'sighting.Squirrel',
-#            on_delete=models.CASCADE,
-#            )
+class Sighting(models.Model):
+    squirrel = models.ForeignKey(
+    'squirrels.Squirrel',
+    on_delete=models.CASCADE,
+)
+
 #
 #    def __str__(self):
 #        return f'{self.sighter] at {self.create_ts}'

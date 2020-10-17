@@ -5,10 +5,10 @@
    <title>HTML QUIZ QUESTION</title>
 </head>
     <body>
-        <p>               
-            <ul>
-                <li><a href="https://www.columbia.edu/">Go Lions</a></li>
-            </ul>
-        </p>
-    </body>
+       <ul>
+	   {% for squirrel in squirrels %}
+	   <li><a href="{% url 'squirrels:unique' %}">{{squirrel.id }}</a><li>
+	{% endfor %}
+       </ul>
+   </body>
 </html>

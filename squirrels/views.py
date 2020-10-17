@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from djang.shortcuts import get_object_or_404
+#from django.http import HttpResponse
 
 from .models import Squirrel
 
@@ -16,14 +17,20 @@ def map(request) :
     return render(request, 'map/index.html', {})
 
 def sightings(request):
-    return render (request, 'sightings/main.html', {})
+    squirrels = Squirrel.objects.all()
+    context={
+        'squirrels':squirrels,
+    }
 
+    return render (request, 'sightings/main.html', context)
 
-#Placeholder for sightings/<unique-squirrel-id>
-#def index(request):
-#    return HttpResponse("This is where Sightings-unique-id View will go.")
+def unique(request, squirrel_id):
+    squirrel = get_object_or_404(Squirrel, pk=squirrel_id)
+    context  = {
+        'squirrel':squirrel
+    }
 
-
+    return render(request, 'sightings/unique.html', context)
 
 #Placeholder for sightings/add
 #def index(request):
