@@ -10,7 +10,7 @@ from .models import Squirrel
     #}
 
     #return render(request, 'map/index.html', context)
-    #return HttpResponse("This is where Sightings View will go.")
+   # return HttpResponse("Testing the index(request) in views.py ")
 
 def map(request) :
     return render(request, 'map/index.html', {})
