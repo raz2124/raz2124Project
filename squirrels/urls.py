@@ -2,7 +2,12 @@ from django.urls import path
 
 from . import views
 
+app_name = 'squirrels'
+
 urlpatterns = [
     path('', views.index, name='index'),
-    #path('sightings', views.trial, name='trial') # not sure if we need an extra one here
+    path('map', views.map, name='map'),
+    path('sightings', views.sightings, name='sightings') # not sure if we need an extra one here
 ]
+
+
