@@ -1,15 +1,22 @@
 from django.shortcuts import render
-#from django.http import HttpResponse
+from django.http import HttpResponse
 
+from .models import Squirrel
 
-def index(request):
-    #return HttpResponse('Ths is where Maps will go')
+#def index(request):
+    #squirrels = Squirrel.object.all()
+    #context = {
+    #        'squirrels': squirrels,
+    #}
+
+    #return render(request, 'map/index.html', context)
+    #return HttpResponse("This is where Sightings View will go.")
+
+def map(request) :
     return render(request, 'map/index.html', {})
 
-
-#Placeholder for sightings
-#def trials(request):
-#    return HttpResponse("This is where Sightings View will go.")
+def sightings(request):
+    return render (request, 'sightings/main.html', {})
 
 
 #Placeholder for sightings/<unique-squirrel-id>
