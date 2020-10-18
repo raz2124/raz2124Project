@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from djang.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 #from django.http import HttpResponse
 
 from .models import Squirrel
@@ -19,13 +19,13 @@ def map(request) :
 def sightings(request):
     squirrels = Squirrel.objects.all()
     context={
-        'squirrels':squirrels,
+        'squirrels': squirrels,
     }
 
     return render (request, 'sightings/main.html', context)
 
 def unique(request, squirrel_id):
-    squirrel = get_object_or_404(Squirrel, pk=squirrel_id)
+    squirrel = get_object_or_404(Squirrel, unique_id=squirrel_id)
     context  = {
         'squirrel':squirrel
     }

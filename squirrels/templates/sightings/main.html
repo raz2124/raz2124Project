@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang=“en”>
 <head>
-   <meta charset=utf-8>
-   <title>HTML QUIZ QUESTION</title>
-</head>
-    <body>
-       <ul>
-	   {% for squirrel in squirrels %}
-	   <li><a href="{% url 'squirrels:unique' %}">{{squirrel.id }}</a><li>
-	{% endfor %}
-       </ul>
-   </body>
-</html>
+	 <meta charset=utf-8> 
+	<title>Squirrel Sightings Page</title>
+</head> 
+<body> 
+	<ul> 
+	{% for Squirrel in squirrels %}
+	<li><a href="{%url 'squirrels:unique' Squirrel.unique_id %}">{{ Squirrel.unique_id }}</a></li>
+	 {% endfor %} 
+	</ul> 
+</body>
+</html> 
