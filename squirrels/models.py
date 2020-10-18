@@ -61,14 +61,14 @@ class Squirrel(models.Model):
     )
     
     def  __str__(self):
-        return self.name
+        return self.unique_id
 
 
-class Sighting(models.Model):
-    squirrel = models.ForeignKey(
-    'squirrels.Squirrel',
-    on_delete=models.CASCADE,
-)
+#class Sighting(models.Model):
+#    squirrel = models.ForeignKey(
+#    'squirrels.Squirrel',
+#    on_delete=models.CASCADE,
+#)
 
 #
 #    def __str__(self):
