@@ -18,9 +18,11 @@ def map(request) :
 
 def sightings(request):
     squirrels = Squirrel.objects.all()
+    #squirrels.date = object.date()
     context={
         'squirrels': squirrels,
-    }
+        #'squirrels.date': squirrels.date, 
+        }
 
     return render (request, 'sightings/main.html', context)
 

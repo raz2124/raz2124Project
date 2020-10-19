@@ -8,7 +8,8 @@
 	<ul> 
 	{% for Squirrel in squirrels %}
 	<li><a href="{%url 'squirrels:unique' Squirrel.unique_id %}">{{ Squirrel.unique_id }}</a></li>
-	 {% endfor %} 
+	<li> {{  Squirrel.date  }}</li>
+	{% endfor %} 
 	</ul> 
 </body>
 </html> 
