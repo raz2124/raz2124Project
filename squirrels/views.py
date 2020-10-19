@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-#from django.http import HttpResponse
+
+from django.http import JsonResponse
+
+from forms import AddSightingsForm
 
 from .models import Squirrel
 
@@ -34,6 +37,14 @@ def unique(request, squirrel_id):
 
     return render(request, 'sightings/unique.html', context)
 
-#Placeholder for sightings/add
-#def index(request):
-#    return HttpResponse("This is where Sightings/add View will go.")
+
+def add(request):
+    if request.method == 'POST':
+        form =AddSightingsForm(request.POST)
+        if  form.is_valid():
+            form.save()
+            return JsonRespnse({})
+        else:
+           return JsonResponse({'errors': form.errors}, status=400)
+    
+    return render(request, 'sightings/add.html', {})
