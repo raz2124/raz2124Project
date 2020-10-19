@@ -1,6 +1,7 @@
 import csv
 from django.core.management.base import BaseCommand, CommandError
 from squirrels.models import Squirrel
+import datetime
 
 class Command(BaseCommand):
     help = 'Import squirrel data'
@@ -16,11 +17,11 @@ class Command(BaseCommand):
 
             for item in reader:
                 obj = Squirrel()
-                obj.latitutde = item['X']
+                obj.latitude = item['X']
                 obj.longitude = item['Y']
                 obj.unique_id=item['Unique Squirrel ID']
                 obj.shift = item['Shift']
-                obj.date = item['Date']
+                obj.date = datetime.datetime.strptime(item['Date'], '%m%d%Y')
                 obj.age = item['Age']
                 obj.save()
        

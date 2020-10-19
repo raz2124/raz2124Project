@@ -56,7 +56,7 @@ class Squirrel(models.Model):
 
     date = models.DateField( 
         help_text=_('Day the Squirrel was Sighted'),
-        auto_now_add=True,
+       # auto_now_add=True,
         null=True,
     )
     
