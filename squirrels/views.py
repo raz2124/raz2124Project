@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from django.http import JsonResponse
 
-from forms import AddSightingsForm
+from .forms import AddSightingsForm
 
 from .models import Squirrel
 
