@@ -51,7 +51,7 @@ class Squirrel(models.Model):
             max_length=20,
             help_text=('How old was this squirrel'),
             choices=AGE_CHOICES,
-            default=AM,
+            default=ADULT,
     )
 
     date = models.DateField( 
