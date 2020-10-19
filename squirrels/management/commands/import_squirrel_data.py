@@ -14,16 +14,19 @@ class Command(BaseCommand):
        
         with open(file_) as fp:
             reader = csv.DictReader(fp)
-
             for item in reader:
-                obj = Squirrel()
-                obj.latitude = item['X']
-                obj.longitude = item['Y']
-                obj.unique_id=item['Unique Squirrel ID']
-                obj.shift = item['Shift']
-                obj.date = datetime.datetime.strptime(item['Date'], '%m%d%Y')
-                obj.age = item['Age']
-                obj.save()
+                if item['Unique Squirrel ID'] in list(Squirrel.objects.order_by().values_list('unique_id',flat=True).distinct()):
+                    pass
+                else:
+                    obj = Squirrel()
+                    obj.latitude = item['X']
+                    obj.longitude = item['Y']
+                    obj.unique_id=item['Unique Squirrel ID']
+                    obj.shift = item['Shift']
+                    obj.date = datetime.datetime.strptime(item['Date'], '%m%d%Y')
+                    obj.age = item['Age']
+                    obj.save()
+
        
         msg = f'You are importing from {file_}'
         self.stdout.write(self.style.SUCCESS(msg))
