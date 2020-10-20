@@ -43,8 +43,10 @@ def add(request):
         form =AddSightingsForm(request.POST)
         if  form.is_valid():
             form.save()
-            return JsonRespnse({})
+            return JsonResponse({})
         else:
-           return JsonResponse({'errors': form.errors}, status=400)
-    
-    return render(request, 'sightings/add.html', {})
+            return JsonResponse({'errors':form.errors}, status=400)
+   # Return blank form for GET requests
+    else:    
+        form = AddSightingsForm()
+    return render(request, 'sightings/add.html', {'form':form})
