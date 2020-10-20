@@ -3,8 +3,6 @@ from django.shortcuts import get_object_or_404
 
 from django.http import JsonResponse
 
-from .forms import AddSightingsForm
-
 from .models import Squirrel
 
 #def index(request):
@@ -25,10 +23,8 @@ def map(request) :
 
 def sightings(request):
     squirrels = Squirrel.objects.all()
-    #squirrels.date = object.date()
     context={
         'squirrels': squirrels
-        #'squirrels.date': squirrels.date, 
         }
 
     return render (request, 'sightings/main.html', context)
@@ -43,14 +39,17 @@ def unique(request, squirrel_id):
 
 
 def add(request):
-    if request.method == 'POST':
-        form =AddSightingsForm(request.POST)
-        if  form.is_valid():
-            form.save()
-            return JsonResponse({})
-        else:
-            return JsonResponse({'errors':form.errors}, status=400)
-   # Return blank form for GET requests
-    else:    
-        form = AddSightingsForm()
-    return render(request, 'sightings/add.html', {'form':form})
+#    if request.method == 'POST':
+#        form =AddSightingsForm(request.POST)
+#        if  form.is_valid():
+#            form.save()
+#            return JsonRespnse({})
+#        else:
+#           return JsonResponse({'errors': form.errors}, status=400)
+    
+    return render(request, 'sightings/add.html', {})
+
+
+
+def  stats(request):
+    return render(request, 'sightings/stats.html',{})
