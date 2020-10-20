@@ -19,8 +19,8 @@ class Command(BaseCommand):
                     pass
                 else:
                     obj = Squirrel()
-                    obj.latitude = item['X']
-                    obj.longitude = item['Y']
+                    obj.latitude = item['Y']
+                    obj.longitude = item['X']
                     obj.unique_id=item['Unique Squirrel ID']
                     obj.shift = item['Shift']
                     obj.date = datetime.datetime.strptime(item['Date'], '%m%d%Y')

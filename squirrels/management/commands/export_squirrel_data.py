@@ -15,7 +15,7 @@ class Command(BaseCommand):
             writer = csv.writer(fp)
             writer.writerow(['X','Y','Unique Squirrel ID','Shift', 'Date','Age'])
 
-            for squirrel in Squirrel.objects.all().value_list('latitude','longitude','unique_id','shift','date','age'):
+            for squirrel in Squirrel.objects.all().values_list('latitude','longitude','unique_id','shift','date','age'):
                 writer.writerow(squirrel)
         
         
