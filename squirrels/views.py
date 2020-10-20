@@ -17,13 +17,17 @@ from .models import Squirrel
    # return HttpResponse("Testing the index(request) in views.py ")
 
 def map(request) :
-    return render(request, 'map/index.html', {})
+    squirrels = Squirrel.objects.all()[:100]
+    context = {
+            'squirrels': squirrels
+            }
+    return render(request, 'map/index.html', context)
 
 def sightings(request):
     squirrels = Squirrel.objects.all()
     #squirrels.date = object.date()
     context={
-        'squirrels': squirrels,
+        'squirrels': squirrels
         #'squirrels.date': squirrels.date, 
         }
 
