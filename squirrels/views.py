@@ -44,3 +44,8 @@ def add(request):
 #           return JsonResponse({'errors': form.errors}, status=400)
     
     return render(request, 'sightings/add.html', {})
+
+
+
+def  stats(request):
+    return render(request, 'sightings/stats.html',{})
