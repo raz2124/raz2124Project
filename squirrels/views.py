@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 
 from .models import Squirrel
+
+from .forms import AddSightingsForm
 
 #def index(request):
     #squirrels = Squirrel.object.all()
@@ -39,15 +41,14 @@ def unique(request, squirrel_id):
 
 
 def add(request):
-#    if request.method == 'POST':
-#        form =AddSightingsForm(request.POST)
-#        if  form.is_valid():
-#            form.save()
-#            return JsonRespnse({})
-#        else:
-#           return JsonResponse({'errors': form.errors}, status=400)
-    
-    return render(request, 'sightings/add.html', {})
+    if request.method == 'POST':
+        form =AddSightingsForm(request.POST)
+        if  form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/sightings/')
+    else:
+        form = AddSightingsForm()
+    return render(request, 'sightings/add.html', {'form':form})
 
 
 
