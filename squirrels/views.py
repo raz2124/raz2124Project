@@ -53,4 +53,14 @@ def add(request):
 
 
 def  stats(request):
-    return render(request, 'sightings/stats.html',{})
+    total_sightings = Squirrel.objects.count()
+    adults = Squirrel.objects.filter(age='Adult').count()
+    juveniles = Squirrel.objects.filter(age='Juvenile').count()
+    context={
+            'total_sightings': total_sightings,
+            'adults' :adults,
+            'juveniles':juveniles
+
+        }
+    
+    return render(request, 'sightings/stats.html',context)

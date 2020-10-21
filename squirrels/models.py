@@ -10,14 +10,14 @@ class Squirrel(models.Model):
     )
    
     latitude = models.DecimalField(
-            max_digits=5,
-            decimal_places=2,
+            max_digits=17,
+            decimal_places=15,
             null=True,
     )
 
     longitude = models.DecimalField(
-            max_digits=5,
-            decimal_places=2,
+            max_digits=17,
+            decimal_places=15,
             null=True,
     ) 
 
