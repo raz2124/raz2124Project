@@ -5,15 +5,15 @@
             Unique ID:  {{ squirrel.unique_id  }} <br>
             Shift: {{ squirrel.shift  }} <br>
             Date: {{ squirrel.date  }} <br>
-            Age: {{ squirrel.age }} <br>
-    </body>
+	    Age: {{ squirrel.age }} <br><br>
 
 
-<form  action="/sightings/add/"  method="post">
-    <label for="/sightings/add/"> Add </label>
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+	    <form  action="{%url 'squirrels:unique' squirrel.unique_id %}"  method="post">
+		<label for="{%url 'squirrels:unique' squirrel.unique_id %}"> Update Sighting: </label><br>
+   		 {% csrf_token %}
+   		 {{ form }}
+    		<input type="submit" value="Submit">
+ 	</form>	
 
+	 </body>
 </html>

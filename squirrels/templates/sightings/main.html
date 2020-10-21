@@ -6,9 +6,14 @@
 	<title>Squirrel Sightings Page</title>
 </head> 
 <body> 
-
-	<!  <li><a href="{%  url 'squirrels:add'% ">Go to Add Forms</a></li> -->
-
+<button type="button" class="btn btn-success btn-lg">
+<a href="add/" style="color:inherit">Add New Squirrel Sighting </a>
+</button>
+<button type="button" class="btn btn-success btn-lg">
+<a href="/map/" style="color:inherit">Squirrel Sighting Map </a>
+</button>
+<br><br>
+	
 <table class="table table-striped table-responsive-md btn-table">
 
   <thead>
@@ -25,7 +30,7 @@
 	<td>{{ Squirrel.unique_id }}</td>
 	<td>{{ Squirrel.date }}</td>
 	<td>
-		<a href="{%url 'squirrels:unique' Squirrel.unique_id %}" class="btn btn-info" role="button">See Details</a>
+		<a href="{%url 'squirrels:unique' Squirrel.unique_id %}" class="btn btn-outline-success" role="button">See Details</a>
       </td>
 	</tr>
 	{% endfor %}
