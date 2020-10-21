@@ -1,10 +1,19 @@
 <html>
-    <body>	
-	    Latitude: {{ squirrel.latitude  }} <br>
-	    Longitude: {{ squirrel.longitude  }} <br>
-	    Unique ID:  {{ squirrel.unique_id  }} <br>
-	    Shift: {{ squirrel.shift  }} <br>
-	    Date: {{ squirrel.date  }} <br>
-	    Age: {{ squirrel.age }} <br>
+	 <body>
+            Latitude: {{ squirrel.latitude  }} <br>
+            Longitude: {{ squirrel.longitude  }} <br>
+            Unique ID:  {{ squirrel.unique_id  }} <br>
+            Shift: {{ squirrel.shift  }} <br>
+            Date: {{ squirrel.date  }} <br>
+            Age: {{ squirrel.age }} <br>
     </body>
+
+
+<form  action="/sightings/add/"  method="post">
+    <label for="/sightings/add/"> Add </label>
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
 </html>

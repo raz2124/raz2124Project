@@ -7,14 +7,6 @@ from .models import Squirrel
 
 from .forms import AddSightingsForm
 
-#def index(request):
-    #squirrels = Squirrel.object.all()
-    #context = {
-    #        'squirrels': squirrels,
-    #}
-
-    #return render(request, 'map/index.html', context)
-   # return HttpResponse("Testing the index(request) in views.py ")
 
 def map(request) :
     squirrels = Squirrel.objects.all()[:100]
@@ -31,13 +23,31 @@ def sightings(request):
 
     return render (request, 'sightings/main.html', context)
 
+#def unique(request, squirrel_id):
+#    squirrel = get_object_or_404(Squirrel, unique_id=squirrel_id)
+#    context  = {
+#        'squirrel':squirrel
+#    }
+
+#    return render(request, 'sightings/unique.html', context)
+
 def unique(request, squirrel_id):
     squirrel = get_object_or_404(Squirrel, unique_id=squirrel_id)
+    form = AddSightingsForm()
     context  = {
-        'squirrel':squirrel
-    }
+        'squirrel':squirrel,
+        'form':form
+        }
 
-    return render(request, 'sightings/unique.html', context)
+    if request.method == 'POST':
+        form =AddSightingsForm(request.POST)
+        if  form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/sightings/<unique_id>')
+    else:
+        form = AddSightingsForm()    
+    return render(request, 'sightings/unique.html',context)
+
 
 
 def add(request):
