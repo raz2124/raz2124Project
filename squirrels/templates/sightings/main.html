@@ -5,6 +5,7 @@
 	<title>Squirrel Sightings Page</title>
 </head> 
 <body> 
+<li><a href="{%  url 'squirrels:add'% ">Go to Add Forms</a></>
 	<ul> 
 	{% for Squirrel in squirrels %}
 	<li><a href="{%url 'squirrels:unique' Squirrel.unique_id %}">{{ Squirrel.unique_id }}</a></li>
