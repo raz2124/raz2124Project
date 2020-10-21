@@ -33,19 +33,19 @@ def sightings(request):
 
 def unique(request, squirrel_id):
     squirrel = get_object_or_404(Squirrel, unique_id=squirrel_id)
-    form = AddSightingsForm()
+    if request.method == 'POST':
+        form = AddSightingsForm(request.POST, instance=squirrel)
+        if  form.is_valid():
+            updated_form = form.save()
+            return HttpResponseRedirect('/sightings/')
+    else:
+        form = AddSightingsForm(instance=squirrel)
+    
     context  = {
         'squirrel':squirrel,
         'form':form
         }
 
-    if request.method == 'POST':
-        form =AddSightingsForm(request.POST)
-        if  form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/sightings/<unique_id>')
-    else:
-        form = AddSightingsForm()    
     return render(request, 'sightings/unique.html',context)
 
 
