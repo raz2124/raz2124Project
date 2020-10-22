@@ -3,9 +3,9 @@ from django.utils.translation import gettext as _
 
 
 class Squirrel(models.Model):
+
     unique_id = models.CharField(
            max_length=20,
-           help_text=_('Unique Identifier for Squirrel'),
            null=True
     )
    
@@ -32,7 +32,6 @@ class Squirrel(models.Model):
 
     shift = models.CharField(
             max_length=20,
-            help_text=('Time of Day'),
             choices=SHIFT_CHOICES,
             default=AM,
     )
@@ -49,26 +48,14 @@ class Squirrel(models.Model):
 
     age = models.CharField(
             max_length=20,
-            help_text=('How old was this squirrel'),
             choices=AGE_CHOICES,
             default=ADULT,
     )
 
     date = models.DateField( 
-        help_text=_('Day the Squirrel was Sighted'),
         null=True,
     )
     
     def  __str__(self):
         return self.unique_id
 
-
-#class Sighting(models.Model):
-#    squirrel = models.ForeignKey(
-#    'squirrels.Squirrel',
-#    on_delete=models.CASCADE,
-#)
-
-#
-#    def __str__(self):
-#        return f'{self.sighter] at {self.create_ts}'
