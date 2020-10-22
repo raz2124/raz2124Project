@@ -58,8 +58,8 @@ def  stats(request):
     adults = Squirrel.objects.filter(age='Adult').count()
     juveniles = Squirrel.objects.filter(age='Juvenile').count()
     shifts = Squirrel.objects.filter(shift='AM').count()
-    latitude = Squirrel.objects.aggregate( _=Avg('latitude'))
-    longitude = Squirrel.objects.aggregate( _=Avg('longitude'))
+    latitude = Squirrel.objects.aggregate(Avg('latitude'))
+    longitude = Squirrel.objects.aggregate(Avg('longitude'))
 
     context={
             'total_sightings': total_sightings,
