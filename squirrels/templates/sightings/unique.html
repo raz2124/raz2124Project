@@ -10,9 +10,14 @@
 
 	    <form  action="{%url 'squirrels:unique' squirrel.unique_id %}"  method="post">
 		<label for="{%url 'squirrels:unique' squirrel.unique_id %}"> Update Sighting: </label><br>
-   		 {% csrf_token %}
-   		 {{ form }}
-    		<input type="submit" value="Submit">
+    		
+	{% csrf_token %}
+            {% for field in form %}
+	    {{field.label}}
+            {{ field }} <br>
+        {% endfor %}
+
+		<input type="submit" value="Submit">
  	</form>	
 
 	 </body>
